@@ -1,0 +1,229 @@
+@import "lib/bootstrap/bootstrap";
+@import "lib/font-awesome/font-awesome";
+
+// Scaffolding
+// -------------------------
+
+@font-face {
+  font-family: Proxima_regular;
+  src: url("../fonts/proxima-nova-regular.ttf");
+}
+
+@font-face {
+  font-family: Proxima_bold;
+  src: url("../fonts/proxima_bold.ttf");
+}
+
+@font-face {
+  font-family: Proxima_semi_bold;
+  src: url("../fonts/proxima_semi_bold.ttf");
+}
+
+@import "themes/default/form";
+@import "themes/default/admin";
+
+body {
+  background: #FF512F;
+  background: -webkit-linear-gradient(right, #FF512F, #DD2476);
+  background: linear-gradient(to left, #FF512F, #DD2476);
+  text-align: center;
+  color: white;
+  font-family: Proxima_regular;
+}
+
+h1{
+  font-family: "Proxima_semi_bold";
+}
+
+h2{
+  font-size: 26px;
+}
+
+header{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.main-container{
+  border-radius: 10px;
+  background: white;
+  padding: 30px 40px;
+  color: #4A4A4A;
+  -webkit-box-shadow: -2px 2px 3px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: -2px 2px 3px 0px rgba(0,0,0,0.25);
+  box-shadow: -2px 2px 3px 0px rgba(0,0,0,0.25);
+}
+
+footer{
+  margin-top: 10px;
+}
+
+.fixed-bottom{
+  bottom: 0;
+  margin-top: 50px;
+}
+
+.btn-home{
+  margin-top: 30px;
+}
+
+.btn:hover{
+  text-transform: none;
+  color: white;
+  font-weight: bold;
+}
+footer{
+  a:hover{
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.btn-block{
+  height: 45px;
+  width: 230px;
+  color: white;
+  font-family: "Proxima_semi_bold" !important;
+  font-size: 16px;
+  line-height: 33px;
+  display: inline-block !important;
+}
+
+.mt5{
+  margin-top: 5ox;
+}
+
+.btn-twitter{
+  background-color: #4099FF;
+  margin: 10px 0;
+
+}
+
+.grey-link{
+  color: #4A4A4A;
+  font-size: 14px;
+  font-family: Proxima_regular;
+  margin: 10px 0;
+}
+
+.grey-link:hover{
+  text-decoration: none;
+  color: #4A4A4A;
+  font-weight: bold;
+}
+
+.btn-facebook{
+  background-color: #3b5998;
+  margin: 10px 0;
+}
+
+.primary-btn{
+  background: #F2384D;
+  border: 1px solid #C72F40;
+  color: white;
+  padding: 10px 40px;
+  margin: 10px 0;
+}
+
+.btn-slack{
+  height: 45px;
+  border: 1px solid #DDDEE0;
+  padding: 5px;
+  color: #333333 !important;
+  margin: 10px 0;
+}
+
+.btn i{
+  margin-right: 10px;
+}
+
+.btn-slack{
+  color: #333333;
+}
+
+.form-control{
+  height: 45px;
+  border:2px solid #DDDEE0;
+}
+
+.margin-bottom-30{
+  margin-bottom: 30px;
+}
+
+footer{
+  a{
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.white{
+  color: white;
+}
+
+.loader{
+  list-style: none;
+  float:left;
+  display: inline-block;
+  margin-left: -20px;
+
+  li{
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #DDDEE0;
+    margin-left: 30px;
+    padding-top: 1px;
+  }
+
+  li:before{
+    content: "";
+    width: 30px;
+    height: 1px;
+    border: 1px solid #DDDEE0;
+    display: inline-block;
+    margin: 0px 0px 6px -45px;
+  }
+
+  li:first-child{
+    padding-top: 0px;
+  }
+
+  li:first-child:before{
+    display: none;
+  }
+
+  .active{
+    color: #F2384D;
+    background-color: #F2384D;
+  }
+
+  li.active:before{
+    color: #F2384D;
+    border-color: #F2384D;
+  }
+
+  .current{
+    width: 20px;
+    height: 20px;
+  }
+
+}
+.admin-menu{
+  margin-bottom: 30px;
+}
+
+.unlink-link{
+  font-size: 16px;
+  color: #4A4A4A;
+  text-decoration: none;
+  line-height: 25px;
+}
+.unlink-link:hover{
+  text-decoration: none;
+  color: #4A4A4A;
+  font-weight: bold;
+}

@@ -1,0 +1,18 @@
+if messages.errors
+  .row
+    .col-md-6.col-md-offset-3
+      .main-container.margin-bottom-30
+        for error in messages.errors
+          div= error.msg
+if messages.info
+  .row
+    .col-md-6.col-md-offset-3
+      .main-container.margin-bottom-30
+        for info in messages.info
+          div= info.msg
+if messages.success
+  .row
+    .col-md-6.col-md-offset-3
+      .main-container.margin-bottom-30
+        for success in messages.success
+          div= success.msg
