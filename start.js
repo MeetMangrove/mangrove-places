@@ -8,9 +8,12 @@ if (major < 7 || (major === 7 && minor <= 5)) {
 // import environmental variables from our variables.env file
 require('dotenv').config({ path: '.env' });
 
-// Start Mangrove Places!
+/**
+ * Start Mangrove Places!
+ */
 const app = require('./app');
 app.set('port', process.env.PORT || 8888);
 const server = app.listen(app.get('port'), () => {
-  console.log(`Mangrove Places running on port ${server.address().port}`);
+  console.log('Mangrove Places is running at http://localhost:%d', app.get('port')); 
+  console.log('Press CTRL-C to stop\n');
 });
