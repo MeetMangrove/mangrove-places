@@ -19,16 +19,24 @@
   src: url("../fonts/proxima_semi_bold.ttf");
 }
 
+@import "themes/default/variables";
+@import "themes/default/buttons";
+// @import "themes/default/default";
 @import "themes/default/form";
 @import "themes/default/admin";
+@import "themes/default/listing";
 
 body {
-  background: #FF512F;
-  background: -webkit-linear-gradient(right, #FF512F, #DD2476);
-  background: linear-gradient(to left, #FF512F, #DD2476);
   text-align: center;
   color: white;
   font-family: Proxima_regular;
+}
+
+.bg {
+  height: 100vh;
+  background: #FF512F;
+  background: -webkit-linear-gradient(right, #FF512F, #DD2476);
+  background: linear-gradient(to left, #FF512F, #DD2476);
 }
 
 h1{
@@ -40,7 +48,7 @@ h2{
 }
 
 header{
-  margin-top: 50px;
+  padding-top: 50px;
   margin-bottom: 50px;
 }
 

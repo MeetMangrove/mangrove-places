@@ -11,3 +11,16 @@
   box-sizing: border-box;
   outline: 0;
 }
+
+.form-group {
+  label {
+    float: left;
+    font-size: 19px;
+  }
+}
+
+.form-group input:focus, .form-group select:focus{
+    outline: none !important;
+    border:1px solid #ff512f;
+    box-shadow: 0 0 10px #ff512f;
+}
