@@ -8113,16 +8113,41 @@ button.close {
     color: #4a4a4a;
     margin-left: auto;
     margin-right: 20px; }
+  .header-home .btn {
+    padding-right: 45px; }
+  .header-home .fa.fa-plus {
+    position: absolute;
+    top: 33px;
+    right: 38px; }
 
 .container-listing {
   margin-top: 50px;
-  color: #4a4a4a; }
+  color: #4a4a4a;
+  padding-bottom: 100px; }
   .container-listing h1 {
     font-size: 36px; }
   .container-listing .btn.btn-red {
     float: right; }
   .container-listing .btn.btn-dark {
     float: left; }
+
+.listing-single {
+  font-size: 19px;
+  text-align: left;
+  margin-bottom: 50px; }
+  .listing-single #listing-owner-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    position: absolute;
+    top: 205px;
+    left: 30px; }
+  .listing-single #listing-owner-name {
+    color: #fff;
+    position: absolute;
+    top: 207px;
+    left: 70px; }
 
 body {
   text-align: center;
@@ -8134,6 +8159,9 @@ body {
   background: #FF512F;
   background: -webkit-linear-gradient(right, #FF512F, #DD2476);
   background: linear-gradient(to left, #FF512F, #DD2476); }
+
+.bold {
+  font-weight: bold; }
 
 h1 {
   font-family: "Proxima_semi_bold"; }
