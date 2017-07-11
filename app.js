@@ -26,6 +26,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 /**
+ * Import environmental variables from our variables.env file
+ */
+require('dotenv').config({ path: '.env' });
+
+/**
  * Express configuration.
  */
 
