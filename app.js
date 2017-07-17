@@ -31,6 +31,11 @@ app.set('view engine', 'pug');
 require('dotenv').config({ path: '.env' });
 
 /**
+ * Import models
+ */
+require('./models/Listing');
+
+/**
  * Express configuration.
  */
 

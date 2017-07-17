@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Listing = mongoose.model('Listing');
+
 /**
  * GET /
  * Listing Add page.
@@ -20,4 +23,18 @@ exports.listings = (req, res) => {
   res.render('listing', {
     title: 'Mangrove Places - Homepage'
   });
+};
+
+exports.addListing = (req, res) => {
+  res.render('listing-edit', {
+    title: 'Add a new listing'
+  });
+};
+
+exports.createListing = async (req, res) => {
+  const listing = new Listing(req.body);
+  await listing.save()
+  console.log('Listing saved!');
+  console.log(req.body);
+  res.redirect('/listings');
 };

@@ -10,12 +10,25 @@ if (major < 7 || (major === 7 && minor <= 5)) {
  */
 require('dotenv').config({ path: '.env' });
 
+
+/**
+ * Import data models
+ */
+require('./models/Listing');
+
+
 /**
  * Connect to MongoDB.
  */
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise; // Use ES6 Promise
-mongoose.connect(process.env.DATABASE);
+
+const app = require('./app');
+if (app.get('env') === 'development') {
+  mongoose.connect(process.env.DATABASE_DEV);
+} else {
+  mongoose.connect(process.env.DATABASE_PROD);
+}
 mongoose.connection.on('error', (err) => {
   console.error(err);
   console.log('MongoDB connection error. Please make sure MongoDB is running.');
@@ -23,14 +36,8 @@ mongoose.connection.on('error', (err) => {
 });
 
 /**
- * Import data models
- */
-require('./models/Listing');
-
-/**
  * Start Mangrove Places!
  */
-const app = require('./app');
 app.set('port', process.env.PORT || 8888);
 const server = app.listen(app.get('port'), () => {
   console.log('Mangrove Places is running at http://localhost:%d', app.get('port')); 

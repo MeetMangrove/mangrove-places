@@ -47,4 +47,10 @@ const listingSchema = new mongoose.Schema({
   guests: [String]
 });
 
-module.exports = mongoose.model('listing', listingSchema);
+listingSchema.pre('save', function(next) {
+  // @todo make slugs unique
+  this.slug = slugs(this.address.street);
+  next();
+});
+
+module.exports = mongoose.model('Listing', listingSchema);
