@@ -2,6 +2,18 @@ const passport = require('passport');
 const request = require('request');
 const SlackStrategy = require('passport-slack').Strategy;
 
+const User = require('../models/User');
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
+});
+
 // Sign in with Slack.
 passport.use(new SlackStrategy({
   clientID: process.env.SLACK_KEY,
