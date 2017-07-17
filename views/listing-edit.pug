@@ -1,0 +1,37 @@
+extends layout-listing
+
+block content
+  .row.bg
+    .col-md-6.col-md-offset-3
+      h2 Let’s get started: </br> Where’s your place located? 🙌
+      // @todo add enc='multipart/form-data
+      // mind that this will break form post
+      form(method='POST' action='/dev/listing/add')
+        div.form-group
+          label(for='streetaddress') Street Address
+          input#streetaddress.form-control(type='text', placeholder='' name='address.street')
+        .row
+          div.form-group.col-md-6
+            label(for='zip') Zip Code
+            input#zip.form-control(type='number', placeholder='' name='address.zip')
+          div.form-group.col-md-6
+            label(for='city') City
+            input#city.form-control(type='text', placeholder='' name='address.city')
+        div.form-group
+          label(for='country') Country
+          input#country.form-control(type='text', placeholder='' name='address.country')
+        div.form-group
+          label(for='typeroom') What kind of place are you listing?
+          select#typeroom.form-control(type='text', name='type')
+            option(value='0') -- Select --
+            option(value='1') Private Room
+            option(value='2') Entire Place
+        .row
+          div.form-group.col-md-6
+            label(for='priceroom') Price Per Night
+            input#priceroom.form-control(type='number', placeholder='Put 0 if Free' name='pricePerNight.value')
+          div.form-group.col-md-6
+            label(for='priceroom') Guest Number
+            input#priceroom.form-control(type='number', placeholder='Max: 3' name='maxGuests')
+        input(type='submit', value='Save', class='btn btn-red')
+        button.btn.btn-red Next

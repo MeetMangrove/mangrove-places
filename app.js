@@ -8,6 +8,7 @@ const errorHandlers = require('./handlers/errorHandlers');
 const dotenv = require('dotenv');
 const sass = require('node-sass-middleware');
 const passport = require('passport');
+// const flash = require('express-flash');
 
 /**
  * API keys and Passport configuration.
@@ -36,10 +37,6 @@ require('dotenv').config({ path: '.env' });
 require('./models/Listing');
 
 /**
- * Express configuration.
- */
-
-/**
  * SASS Configuration
  */
 app.use(sass({
@@ -48,6 +45,10 @@ app.use(sass({
   debug: true
 }));
 
+/**
+ * Express configuration.
+ */
+// app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

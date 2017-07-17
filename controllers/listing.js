@@ -34,7 +34,13 @@ exports.addListing = (req, res) => {
 exports.createListing = async (req, res) => {
   const listing = new Listing(req.body);
   await listing.save()
+  // req.flash('success', 'Successfully created new listing ${listing.name}')
+
   console.log('Listing saved!');
   console.log(req.body);
   res.redirect('/listings');
+};
+
+exports.getListings = (req, res) => {
+  res.render('layout-listing-list', { title: "Mangrove Places - Listings" })
 };
