@@ -8,7 +8,8 @@ const errorHandlers = require('./handlers/errorHandlers');
 const dotenv = require('dotenv');
 const sass = require('node-sass-middleware');
 const passport = require('passport');
-// const flash = require('express-flash');
+const flash = require('express-flash');
+const MongoStore = require('connect-mongo')(session);
 
 /**
  * API keys and Passport configuration.
@@ -48,10 +49,21 @@ app.use(sass({
 /**
  * Express configuration.
  */
-// app.use(flash());
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: process.env.SESSION_SECRET,
+  store: new MongoStore({
+    url: process.env.DATABASE_DEV || process.env.DATABASE_PROD,
+    autoReconnect: true,
+    clear_interval: 3600
+  })
+}));
 
 /**
  * Exposes a bunch of methods for validating data.

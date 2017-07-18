@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Listing = mongoose.model('Listing');
+const flash = require('express-flash');
 
 /**
  * GET /
@@ -34,7 +35,7 @@ exports.addListing = (req, res) => {
 exports.createListing = async (req, res) => {
   const listing = new Listing(req.body);
   await listing.save()
-  // req.flash('success', 'Successfully created new listing ${listing.name}')
+  req.flash('success', 'Successfully created new listing ${listing.name}');
 
   console.log('Listing saved!');
   console.log(req.body);
