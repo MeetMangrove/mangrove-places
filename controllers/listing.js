@@ -42,5 +42,5 @@ exports.createListing = async (req, res) => {
 };
 
 exports.getListings = (req, res) => {
-  res.render('layout-listing-list', { title: "Mangrove Places - Listings" })
+  res.render('listing', { title: "Mangrove Places - Listings" })
 };
