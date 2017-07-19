@@ -14,7 +14,7 @@ const listingController = require('../controllers/listing');
 */
 router.get('/', homeController.index);
 router.get('/listing/add', listingController.index);
-router.get('/listings', listingController.listings);
+router.get('/listings', listingController.getListings);
 router.get('/auth/slack', passport.authenticate('slack'));
 router.get('/auth/slack/callback', passport.authenticate('slack', { 
   failureRedirect: '/onboarding/step1'

@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 const slugs = require('slugs');
 
 const listingSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     trim: true
   },
@@ -49,7 +49,7 @@ const listingSchema = new mongoose.Schema({
 
 listingSchema.pre('save', function(next) {
   // @todo make slugs unique
-  this.slug = slugs(this.address.street);
+  this.slug = slugs(this.title);
   next();
 });
 

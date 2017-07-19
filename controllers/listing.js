@@ -12,7 +12,7 @@ exports.index = (req, res) => {
   // }
 
   res.render('listing-add', {
-    title: 'Mangrove Places - Add Listing'
+    title: 'Add Listing'
   });
 };
 
@@ -22,7 +22,7 @@ exports.listings = (req, res) => {
   // }
 
   res.render('listing', {
-    title: 'Mangrove Places - Homepage'
+    title: 'Homepage'
   });
 };
 
@@ -42,6 +42,8 @@ exports.createListing = async (req, res) => {
   res.redirect('/listings');
 };
 
-exports.getListings = (req, res) => {
-  res.render('listing', { title: "Mangrove Places - Listings" })
+exports.getListings = async (req, res) => {
+  const listings = await Listing.find();
+  console.log(listings);
+  res.render('listing', { title: "Listings", listings })
 };

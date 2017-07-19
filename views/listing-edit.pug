@@ -20,6 +20,9 @@ block primary
         div.form-group
           label(for='country') Country
           input#country.form-control(type='text', placeholder='' name='address.country')
+        
+        hr
+        
         div.form-group
           label(for='typeroom') What kind of place are you listing?
           select#typeroom.form-control(type='text', name='type')
@@ -28,10 +31,25 @@ block primary
             option(value='2') Entire Place
         .row
           div.form-group.col-md-6
-            label(for='priceroom') Price Per Night
+            label(for='priceroom') Price Per Night (€)
             input#priceroom.form-control(type='number', placeholder='Put 0 if Free' name='pricePerNight.value')
           div.form-group.col-md-6
             label(for='priceroom') Guest Number
             input#priceroom.form-control(type='number', placeholder='Max: 3' name='maxGuests')
+
+        hr
+
+        div.form-group
+          label(for='title') Title
+          input#title.form-control(type='text', placeholder='' name='title')
+        div.form-group
+          label(for='description') Description Summary
+          textarea#description.form-control(type='text', placeholder='' name='description')
+        div.form-group
+          label(for='description') Is your place in Airbnb? Paste your public link here
+          input#uri.form-control(type='text', placeholder='' name='uri')
+          p Note: Make sure your listing is currently public.
+
         input(type='submit', value='Save', class='btn btn-red')
-        button.btn.btn-red Next
+
+      // form.dropzone#my-dropzone(action='/post')

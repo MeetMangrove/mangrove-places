@@ -2,86 +2,20 @@ extends layout-listing-list
 
 block primary
   .row
-    .col-md-4.listing-single
-      img#listing-image(src='http://lorempixel.com/300/250/city')
-      div.listing-owner
-        img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-        span#listing-owner-name.bold @name 
-      div.bold
-        span#address City, Country  . 
-        span#listing-name Listing Name
-      div 
-        span#price <i class="fa fa-home"></i> 1200€ / Month  . 
-        span#listing-date Aug-Oct
-      div 
-        span#listing-duration Max. 7 days
-
-    .col-md-4.listing-single
-      img#listing-image(src='http://lorempixel.com/300/250/city')
-      div.listing-owner
-        img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-        span#listing-owner-name.bold @name 
-      div.bold
-        span#address City, Country  . 
-        span#listing-name Listing Name
-      div 
-        span#price <i class="fa fa-home"></i> 1200€ / Month  . 
-        span#listing-date Aug-Oct
-      div 
-        span#listing-duration Max. 7 days
-
-    .col-md-4.listing-single
-        img#listing-image(src='http://lorempixel.com/300/250/city')
+    each listing in listings
+      .col-md-4.listing-single
+        img#listing-image(src=`/uploads/${listing.photo || 'listing-default.jpg'}`)
         div.listing-owner
           img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
           span#listing-owner-name.bold @name 
         div.bold
-          span#address City, Country  . 
-          span#listing-name Listing Name
+          span#address #{listing.address.city}, #{listing.address.country}
+        duv.bold
+          span#listing-name= listing.title
         div 
-          span#price <i class="fa fa-home"></i> 1200€ / Month  . 
-          span#listing-date Aug-Oct
+          span#price <i class="fa fa-home"></i> #{listing.pricePerNight.value} € / night
+          span#listing-date
         div 
-          span#listing-duration Max. 7 days
-
-    .col-md-4.listing-single
-      img#listing-image(src='http://lorempixel.com/300/250/city')
-      div.listing-owner
-        img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-        span#listing-owner-name.bold @name 
-      div.bold
-        span#address City, Country  . 
-        span#listing-name Listing Name
-      div 
-        span#price <i class="fa fa-home"></i> 1200€ / Month  . 
-        span#listing-date Aug-Oct
-      div 
-        span#listing-duration Max. 7 days
-
-    .col-md-4.listing-single
-      img#listing-image(src='http://lorempixel.com/300/250/city')
-      div.listing-owner
-        img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-        span#listing-owner-name.bold @name 
-      div.bold
-        span#address City, Country  . 
-        span#listing-name Listing Name
-      div 
-        span#price <i class="fa fa-home"></i> 1200€ / Month  . 
-        span#listing-date Aug-Oct
-      div 
-        span#listing-duration Max. 7 days
-
-    .col-md-4.listing-single
-      img#listing-image(src='http://lorempixel.com/300/250/city')
-      div.listing-owner
-        img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-        span#listing-owner-name.bold @name 
-      div.bold
-        span#address City, Country  . 
-        span#listing-name Listing Name
-      div 
-        span#price <i class="fa fa-home"></i> 1200€ / Month  . 
-        span#listing-date Aug-Oct
-      div 
-        span#listing-duration Max. 7 days      
+          span#listing-duration
+        div 
+          span#listing-maxguests Maximum guests: #{listing.maxGuests}
