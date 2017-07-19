@@ -5,6 +5,7 @@ const express = require('express');
 const session = require('express-session');
 const expressValidator = require('express-validator');
 const errorHandlers = require('./handlers/errorHandlers');
+const lusca = require('lusca');
 const dotenv = require('dotenv');
 const sass = require('node-sass-middleware');
 const passport = require('passport');
@@ -64,6 +65,31 @@ app.use(session({
     clear_interval: 3600
   })
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(lusca.xframe('SAMEORIGIN'));
+app.use(lusca.xssProtection(true));
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+app.use((req, res, next) => {
+  res.locals.path = req.path;
+  // After successful login, redirect back to the intended page
+  if (!req.user &&
+      req.path !== '/login' &&
+      req.path !== '/signup' &&
+      !req.path.match(/^\/auth/) &&
+      !req.path.match(/\./)) {
+    req.session.returnTo = req.path;
+  } else if (req.user &&
+      req.path == '/account') {
+    req.session.returnTo = req.path;
+  }
+  next();
+});
 
 /**
  * Exposes a bunch of methods for validating data.
