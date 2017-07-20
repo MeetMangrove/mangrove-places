@@ -38,7 +38,7 @@ router.get('/auth/slack/callback', passport.authenticate('slack', {
  * Backend dev temporary routes
  */
 router.get('/dev/listings', passportConfig.isAuthenticated, listingController.getListings);
-router.get('/dev/listing/:id', passportConfig.isAuthenticated, listingController.getListingById);
+router.get('/dev/listings/:id', passportConfig.isAuthenticated, listingController.getListingById);
 router.get('/dev/listing/add', passportConfig.isAuthenticated, listingController.addListing);
 router.post('/dev/listing/add', passportConfig.isAuthenticated, catchErrors(listingController.createListing));
 

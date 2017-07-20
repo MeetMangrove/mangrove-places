@@ -240,3 +240,13 @@ footer{
   color: #4A4A4A;
   font-weight: bold;
 }
+
+
+a {
+  color: initial;
+  text-decoration: none;
+  &:focus, &:hover {
+    text-decoration: none;
+    color: initial;
+  } 
+}

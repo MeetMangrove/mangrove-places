@@ -81,3 +81,30 @@
     left: 70px;
   }
 }
+
+/** LISTING DETAIL  **/
+
+.listing-detail {
+  // margin-left: 15px; 
+  img { 
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #listing-owner-name, #listing-owner-pic {
+    position: initial;
+    color: initial;
+  }
+  #listing-owner-pic {
+    margin-right: 10px;
+  }
+  .listing-detail-title {
+    font-size: 19px;
+    text-align: left;
+    padding: 0;
+    // margin-left: 15px;
+  }
+}
+
+.big-font {
+  font-size: 32px;
+}

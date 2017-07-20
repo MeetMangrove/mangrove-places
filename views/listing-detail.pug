@@ -1,21 +1,28 @@
 extends layout-listing-list
 
 block primary
-  button Back to Listing
-  .row
-    .col-md-4.listing-single
+  a.back-div(href="/")
+    i.fa.fa-arrow-left 
+    span Back to Listing
+  .row.listing-detail
+    .col-md-6.listing-single
       img#listing-image(src=`/uploads/${listing.photo || 'listing-default.jpg'}`)
       div.listing-owner
         img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-        span#listing-owner-name.bold @name 
-      div.bold
-        span#address #{listing.address.city}, #{listing.address.country}
-      div.bold
-        span#listing-name= listing.title
+        span#listing-owner-name.bold @name
+    .col-md-5.col-md-offset-1.listing-detail-title
+      .big-font
+        div.bold
+          span#address #{listing.address.city}, #{listing.address.country}
+        div
+          span#listing-name= listing.title
       div 
+        div #{listing.description}
         span#price <i class="fa fa-home"></i> #{listing.pricePerNight.value} € / night
         span#listing-date
       div 
         span#listing-duration
       div 
         span#listing-maxguests Maximum guests: #{listing.maxGuests}
+      a.btn.btn-block.btn-slack.btn-social.text-center.btn-pink(href='/auth/slack') Ask about this place 
+          i.fa.fa-slack

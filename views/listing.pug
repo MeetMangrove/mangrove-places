@@ -4,18 +4,19 @@ block primary
   .row
     each listing in listings
       .col-md-4.listing-single
-        img#listing-image(src=`/uploads/${listing.photo || 'listing-default.jpg'}`)
-        div.listing-owner
-          img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-          span#listing-owner-name.bold @name 
-        div.bold
-          span#address #{listing.address.city}, #{listing.address.country}
-        duv.bold
-          span#listing-name= listing.title
-        div 
-          span#price <i class="fa fa-home"></i> #{listing.pricePerNight.value} € / night
-          span#listing-date
-        div 
-          span#listing-duration
-        div 
-          span#listing-maxguests Maximum guests: #{listing.maxGuests}
+        a(href=`/dev/listings/${listing.id}`)
+          img#listing-image(src=`/uploads/${listing.photo || 'listing-default.jpg'}`)
+          div.listing-owner
+            img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
+            span#listing-owner-name.bold @name 
+          div.bold
+            span#address #{listing.address.city}, #{listing.address.country}
+          duv.bold
+            span#listing-name= listing.title
+          div 
+            span#price <i class="fa fa-home"></i> #{listing.pricePerNight.value} € / night
+            span#listing-date
+          div 
+            span#listing-duration
+          div 
+            span#listing-maxguests Maximum guests: #{listing.maxGuests}
