@@ -47,3 +47,10 @@ exports.getListings = async (req, res) => {
   console.log(listings);
   res.render('listing', { title: "Listings", listings })
 };
+
+exports.getListingById = async (req, res) => {
+
+  const listing = await Listing.findById(req.params.id);
+  console.log(listing);
+  res.render('listing-detail', { title: "Listing", listing })
+};

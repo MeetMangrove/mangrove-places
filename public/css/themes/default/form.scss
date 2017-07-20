@@ -24,3 +24,18 @@
     border:1px solid #ff512f;
     box-shadow: 0 0 10px #ff512f;
 }
+
+.suggestions-container {
+  border: 1px solid #000;
+  box-shadow: 0px 5px rgba(12, 12, 12, 0.45);
+  width: 100%;
+background : #ffffff;
+  z-index: 1000;
+  position: absolute;
+display : none;
+}
+.suggestions-container-row {
+  padding: 5px;
+  border: 1px dashed #9191e9;
+  margin: 5px;
+}

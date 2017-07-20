@@ -8,18 +8,21 @@ block primary
       // mind that this will break form post
       form(method='POST' action='/dev/listing/add')
         div.form-group
+          label(for='streetaddress') Full Address
+          input#typeaheadaddress.form-control(type='text', placeholder='Type your adress here' name='address.street')
+        div.form-group
           label(for='streetaddress') Street Address
-          input#streetaddress.form-control(type='text', placeholder='' name='address.street')
+          input#streetaddress.form-control(type='text', placeholder='' name='address.street' disabled)
         .row
           div.form-group.col-md-6
             label(for='zip') Zip Code
-            input#zip.form-control(type='number', placeholder='' name='address.zip')
+            input#zip.form-control(type='number', placeholder='' name='address.zip' disabled)
           div.form-group.col-md-6
             label(for='city') City
-            input#city.form-control(type='text', placeholder='' name='address.city')
+            input#city.form-control(type='text', placeholder='' name='address.city' disabled)
         div.form-group
           label(for='country') Country
-          input#country.form-control(type='text', placeholder='' name='address.country')
+          input#country.form-control(type='text', placeholder='' name='address.country' disabled)
         
         hr
         

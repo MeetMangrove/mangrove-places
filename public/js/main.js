@@ -1,14 +1,39 @@
 $(document).ready(function() {
-  // $("#dropzone").dropzone({ url: "/file/post", uploadMultiple: true });
-  Dropzone.clickable = false;
-  
+  /**
+   * Jquery Adress typehead Plugin Config
+   */
+
+  var optionnalConfig = {
+    label : "Adresse complete", 
+    // street_number_input : {
+    //   id : "numberaddress",
+    //   label : "Numero de la rue"
+    // },
+    street_name_input : {
+      id : "streetaddress",
+      // label : "Nom de la rue"
+    },
+    zip_input : {
+      id : "zip",
+      // label : "Code postal"
+    },
+    town_input : {
+      id : "city",
+      // label : "Ville"
+    },
+    // department_input : {
+    //   id : "department",
+    //   label : "Departement"
+    // },
+    // region_input : {
+    //   id : "region",
+    //   label : "Region"
+    // },
+    country_input : {
+      id : "country",
+      label : "Pays"
+    }
+  };
+  $("input#typeaheadaddress").suggest(optionnalConfig);
 });
 
-// Dropzone.options = {
-//   uploadMultiple: true,
-//   acceptedFiles: 'image/*',
-//   maxFilesize: 2,
-//   clickable: false,
-//   autoProcessQueue: false,
-//   dictDefaultMessage: 'test'
-// };
