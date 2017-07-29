@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(lib/fileuploader.css);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -8045,7 +8046,7 @@ a.btn-pink {
 .back-div {
   font-size: 19px;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 23px;
   text-align: left;
   display: block;
   color: initial; }
@@ -8198,10 +8199,19 @@ a.btn-pink {
 .listing-detail .listing-detail-title {
   font-size: 19px;
   text-align: left;
-  padding: 0; }
+  padding: 0;
+  padding-left: 27px; }
 
 .big-font {
   font-size: 32px; }
+
+.listing-edit h2 {
+  margin-bottom: 45px;
+  font-weight: bold;
+  font-size: 36px; }
+
+.listing-edit #description {
+  height: 144px; }
 
 /*
  * The MIT License

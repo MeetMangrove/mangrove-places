@@ -10,7 +10,7 @@ block primary
       div.listing-owner
         img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
         span#listing-owner-name.bold @name
-    .col-md-5.col-md-offset-1.listing-detail-title
+    .col-md-6.listing-detail-title
       .big-font
         div.bold
           span#address #{listing.address.city}, #{listing.address.country}
@@ -21,7 +21,9 @@ block primary
         span#price <i class="fa fa-home"></i> #{listing.pricePerNight.value} € / night
         span#listing-date
       div 
-        span#listing-duration
+        span#listing-duration <b>Availability: </b>
+      div
+        span#listing-address <b>Address: </b> #{listing.address.street} #{listing.address.zip}, #{listing.address.city}
       div 
         span#listing-maxguests Maximum guests: #{listing.maxGuests}
       a.btn.btn-block.btn-slack.btn-social.text-center.btn-pink(href='/auth/slack') Ask about this place 
