@@ -3,84 +3,96 @@ extends layout-listing
 block primary
   .row.listing-edit
     .col-md-6.col-md-offset-3
-      h2 Let’s get started: </br> Where’s your place located, #{user.profile.firstName}? 🙌
       // @todo add enc='multipart/form-data
       // mind that this will break form post
-      form(method='POST' action='/dev/listing/add')
-        div.form-group
-          label(for='typeaheadaddress') Full Address
-          input#typeaheadaddress.form-control(type='text',autocomplete="false" placeholder='Type your adress here')
-        .row
-          div.form-group.col-md-3
-            label(for='numberaddress') Number        
-            input#numberaddress.form-control(type='number', placeholder='' name='address.number' disabled)         
-          div.form-group.col-md-9
-            label(for='streetaddress') Street Address
-            input#streetaddress.form-control(type='text', placeholder='' name='address.street' disabled)
-        .row
-          div.form-group.col-md-6
-            label(for='zip') Zip Code
-            input#zip.form-control(type='number', placeholder='' name='address.zip' disabled)
-          div.form-group.col-md-6
-            label(for='city') City
-            input#city.form-control(type='text', placeholder='' name='address.city' disabled)
-        .row
-          div.form-group.col-md-6
-            label(for='department') Departement
-            input#department.form-control(type='text', placeholder='' name='address.department' disabled)
-          div.form-group.col-md-6
-            label(for='region') Region
-            input#region.form-control(type='text', placeholder='' name='address.region' disabled)
-        div.form-group
-          label(for='country') Country
-          input#country.form-control(type='text', placeholder='' name='address.country' disabled)
+      form#msform(method='POST' action='/dev/listing/add')
+        //- ul#progressbar
+        //-   li.active Etape 1
+        //-   li Etape 2
+        //-   li Etape 3
+        fieldset
+          h2 Let’s get started: </br> Where’s your place located, #{user.profile.firstName}? 🙌
+          div.form-group
+            label(for='typeaheadaddress') Full Address
+            input#typeaheadaddress.form-control(type='text',autocomplete="false" placeholder='Type your adress here')
+          .row
+            div.form-group.col-md-3
+              label(for='numberaddress') Number        
+              input#numberaddress.form-control(type='number', placeholder='' name='address.number' disabled)         
+            div.form-group.col-md-9
+              label(for='streetaddress') Street Address
+              input#streetaddress.form-control(type='text', placeholder='' name='address.street' disabled)
+          .row
+            div.form-group.col-md-6
+              label(for='zip') Zip Code
+              input#zip.form-control(type='number', placeholder='' name='address.zip' disabled)
+            div.form-group.col-md-6
+              label(for='city') City
+              input#city.form-control(type='text', placeholder='' name='address.city' disabled)
+          .row
+            div.form-group.col-md-6
+              label(for='department') Departement
+              input#department.form-control(type='text', placeholder='' name='address.department' disabled)
+            div.form-group.col-md-6
+              label(for='region') Region
+              input#region.form-control(type='text', placeholder='' name='address.region' disabled)
+          div.form-group
+            label(for='country') Country
+            input#country.form-control(type='text', placeholder='' name='address.country' disabled)
+          input.next.action-button.btn.btn-red(type="button" value="Next" name="next")
+
+        fieldset
+          h2 Lucky you! 🍀 </br> It's an amazing place!        
+          div.form-group
+            label(for='typeroom') What kind of place are you listing?
+            select#typeroom.form-control(type='text', name='type')
+              option(value='0') -- Select --
+              option(value='1') Private Room
+              option(value='2') Entire Place
+          .row
+            div.form-group.col-md-6
+              label(for='priceroom') Price Per Night (€)
+              input#priceroom.form-control(type='number', placeholder='Put 0 if Free' name='pricePerNight.value')
+            div.form-group.col-md-6
+              label(for='priceroom') Guest Number
+              input#priceroom.form-control(type='number', placeholder='Max: 3' name='maxGuests')
+          input.previous.action-button.btn.btn-dark(type="button" value="Previous" name="previous")              
+          input.next.action-button.btn.btn-red(type="button" value="Next" name="next")
+        fieldset
+          h2 When is it available? 🗓
+          .row
+            div.form-group.col-md-6
+              label(for='dateroom') Start 
+              input#dateroom.form-control(type='date', name='dateStart')
+            div.form-group.col-md-6
+              label(for='dateroom') End
+              input#dateroom.form-control(type='date', name='dateStart')
+            div.form-group.col-md-12
+              label(for='maxdaysroom') Max. Days of stay
+              input#maxdaysroom.form-control(type='number', placeholder='Ex: 3 days' name='maxDays')
+          input.previous.action-button.btn.btn-dark(type="button" value="Previous" name="previous")              
+          input.next.action-button.btn.btn-red(type="button" value="Next" name="next")
         
-        hr
-        h2 Lucky you! 🍀 </br> It's an amazing place!        
-        div.form-group
-          label(for='typeroom') What kind of place are you listing?
-          select#typeroom.form-control(type='text', name='type')
-            option(value='0') -- Select --
-            option(value='1') Private Room
-            option(value='2') Entire Place
-        .row
-          div.form-group.col-md-6
-            label(for='priceroom') Price Per Night (€)
-            input#priceroom.form-control(type='number', placeholder='Put 0 if Free' name='pricePerNight.value')
-          div.form-group.col-md-6
-            label(for='priceroom') Guest Number
-            input#priceroom.form-control(type='number', placeholder='Max: 3' name='maxGuests')
-
-        hr
-        h2 When is it available? 🗓
-        .row
-          div.form-group.col-md-6
-            label(for='dateroom') Start 
-            input#dateroom.form-control(type='date', name='dateStart')
-          div.form-group.col-md-6
-            label(for='dateroom') End
-            input#dateroom.form-control(type='date', name='dateStart')
-          div.form-group.col-md-12
-            label(for='maxdaysroom') Max. Days of stay
-            input#maxdaysroom.form-control(type='number', placeholder='Ex: 3 days' name='maxDays')
-       
-        hr
-        h2 You rock! 🚀 </br> Let's describe your listing:
-        div.form-group
-          label(for='title') Title
-          input#title.form-control(type='text', placeholder='' name='title')
-        div.form-group
-          label(for='description') Description Summary
-          textarea#description.form-control(type='text', placeholder='The decor, the light, the location…' name='description')
-        div.form-group
-          label(for='description') Is your place in Airbnb? Paste your public link here
-          input#uri.form-control(type='text', placeholder='' name='uri')
-          p Note: Make sure your listing is currently public.
-        hr
-        h2 Last step: </br> ✨✨ Make it shine! ✨✨
-        .row
-          div.form-group.col-md-12        
-            label(for='filesimages') Upload Photos - PNG or JPG        
-            input#filesimages.form-control(type="file" name="files" )
-
-        input(type='submit', value='Save', class='btn btn-red')
+        fieldset
+          h2 You rock! 🚀 </br> Let's describe your listing:
+          div.form-group
+            label(for='title') Title
+            input#title.form-control(type='text', placeholder='' name='title')
+          div.form-group
+            label(for='description') Description Summary
+            textarea#description.form-control(type='text', placeholder='The decor, the light, the location…' name='description')
+          div.form-group
+            label(for='description') Is your place in Airbnb? Paste your public link here
+            input#uri.form-control(type='text', placeholder='' name='uri')
+            p Note: Make sure your listing is currently public.
+          input.previous.action-button.btn.btn-dark(type="button" value="Previous" name="previous")              
+          input.next.action-button.btn.btn-red(type="button" value="Next" name="next")
+        
+        fieldset
+          h2 Last step: </br> ✨✨ Make it shine! ✨✨
+          .row
+            div.form-group.col-md-12        
+              label(for='filesimages') Upload Photos - PNG or JPG        
+              input#filesimages.form-control(type="file" name="files" )
+          input.previous.action-button.btn.btn-dark(type="button" value="Previous" name="previous")              
+          input(type='submit', name="submit" value='Submit Listing', class='submit action-button btn btn-red')

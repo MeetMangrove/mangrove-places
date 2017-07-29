@@ -6,6 +6,7 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 @import url(lib/fileuploader.css);
+@import url(lib/multistep-form.css);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
