@@ -1,8 +1,8 @@
 $(document).ready(function() {
   /**
-   * Jquery Adress typehead Plugin Config
-   */
-
+  * Jquery Adress typehead Plugin Config
+  */
+  
   var optionnalConfig = {
     // label : "Adresse complete", 
     street_number_input : {
@@ -35,38 +35,38 @@ $(document).ready(function() {
     }
   };
   $("input#typeaheadaddress").suggest(optionnalConfig);
-
+  
   $('input[name="files"]').fileuploader({
     // Options will go here
     extensions: ['jpg', 'jpeg', 'png', 'gif', 'bmp'],
     limit: 5,
 		changeInput: ' ',
 		theme: 'thumbnails',
-        enableApi: true,
+    enableApi: true,
 		addMore: true,
 		thumbnails: {
 			box: '<div class="fileuploader-items">' +
-                      '<ul class="fileuploader-items-list">' +
-					      '<li class="fileuploader-thumbnails-input"><div class="fileuploader-thumbnails-input-inner">+</div></li>' +
-                      '</ul>' +
-                  '</div>',
+      '<ul class="fileuploader-items-list">' +
+      '<li class="fileuploader-thumbnails-input"><div class="fileuploader-thumbnails-input-inner">+</div></li>' +
+      '</ul>' +
+      '</div>',
 			item: '<li class="fileuploader-item">' +
-				       '<div class="fileuploader-item-inner">' +
-                           '<div class="thumbnail-holder">${image}</div>' +
-                           '<div class="actions-holder">' +
-                               '<a class="fileuploader-action fileuploader-action-remove" title="Remove"><i class="remove"></i></a>' +
-                           '</div>' +
-                       	   '<div class="progress-holder">${progressBar}</div>' +
-                       '</div>' +
-                   '</li>',
+      '<div class="fileuploader-item-inner">' +
+      '<div class="thumbnail-holder">${image}</div>' +
+      '<div class="actions-holder">' +
+      '<a class="fileuploader-action fileuploader-action-remove" title="Remove"><i class="remove"></i></a>' +
+      '</div>' +
+      '<div class="progress-holder">${progressBar}</div>' +
+      '</div>' +
+      '</li>',
 			item2: '<li class="fileuploader-item">' +
-				       '<div class="fileuploader-item-inner">' +
-                           '<div class="thumbnail-holder">${image}</div>' +
-                           '<div class="actions-holder">' +
-                               '<a class="fileuploader-action fileuploader-action-remove" title="Remove"><i class="remove"></i></a>' +
-                           '</div>' +
-                       '</div>' +
-                   '</li>',
+      '<div class="fileuploader-item-inner">' +
+      '<div class="thumbnail-holder">${image}</div>' +
+      '<div class="actions-holder">' +
+      '<a class="fileuploader-action fileuploader-action-remove" title="Remove"><i class="remove"></i></a>' +
+      '</div>' +
+      '</div>' +
+      '</li>',
 			startImageRenderer: true,
 			canvasImage: false,
 			_selectors: {
@@ -88,12 +88,28 @@ $(document).ready(function() {
 		},
 		afterRender: function(listEl, parentEl, newInputEl, inputEl) {
 			var plusInput = listEl.find('.fileuploader-thumbnails-input'),
-				api = $.fileuploader.getInstance(inputEl.get(0));
-		
+      api = $.fileuploader.getInstance(inputEl.get(0));
+      
 			plusInput.on('click', function() {
 				api.open();
 			});
 		},    
-});
+  });
+  
+  $('#delete-listing').on('click', function() { 
+    if (confirm("Are you sure you want to delete this ressource?")) {
+      let id = $(this).data("listingid") 
+      $.ajax({ url: '/dev/listings/' + id, method: 'DELETE', }) 
+      .done(function() { 
+        console.log('deleted');
+        location.replace('/listings');
+      })
+      .catch(function () {
+        console.log("Promise Rejected");
+        location.replace('/listings');        
+      });
+    } 
+  });
+  
 });
 

@@ -42,6 +42,17 @@ exports.createListing = async (req, res) => {
   res.redirect('/listings');
 };
 
+exports.deleteListing = async (req, res) => {
+  console.log(req);
+  const listing = await Listing.findById(req.params.id);
+  await listing.remove()
+  req.flash('success', 'Successfully deleted listing ${listing.name}');
+
+  console.log('Listing deleted!');
+  res.redirect('/listings');
+};
+
+
 exports.getListings = async (req, res) => {
   const listings = await Listing.find();
   console.log(listings);
@@ -51,6 +62,5 @@ exports.getListings = async (req, res) => {
 exports.getListingById = async (req, res) => {
 
   const listing = await Listing.findById(req.params.id);
-  console.log(listing);
   res.render('listing-detail', { title: "Listing", listing })
 };

@@ -29,9 +29,12 @@ const listingSchema = new mongoose.Schema({
     index: '2dsphere'
   },
   address: {
+    number: String,
     street: String,
     zip: String,
     city: String,
+    department:String,
+    region: String,
     country: String
   },
   pricePerNight: {

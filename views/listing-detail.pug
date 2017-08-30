@@ -9,7 +9,8 @@ block primary
       img#listing-image(src=`/uploads/${listing.photo || 'listing-default.jpg'}`)
       div.listing-owner
         img#listing-owner-pic(src='http://lorempixel.com/100/100/people')
-        span#listing-owner-name.bold @name
+        span#listing-owner-name.bold @#{listing.owner.nickname}
+        input.action-button.btn.btn-red(type="button" value="Remove listing" name="next" id="delete-listing" data-listingid=`${listing.id}`) 
     .col-md-6.listing-detail-title
       .big-font
         div.bold
@@ -23,8 +24,8 @@ block primary
       div 
         span#listing-duration <b>Availability: </b>
       div
-        span#listing-address <b>Address: </b> #{listing.address.street} #{listing.address.zip}, #{listing.address.city}
+        span#listing-address <b>Address: </b> #{listing.address.street} #{listing.address.zip}, #{listing.address.region}, #{listing.address.department}, #{listing.address.city}
       div 
         span#listing-maxguests Maximum guests: #{listing.maxGuests}
-      a.btn.btn-block.btn-slack.btn-social.text-center.btn-pink(href='/auth/slack') Ask about this place 
+      a.btn.btn-block.btn-slack.btn-social.text-center.btn-pink(href=`slack://user?team=T0QJH8NJK&id=${listing.owner.slackid}`) Ask about this place 
           i.fa.fa-slack

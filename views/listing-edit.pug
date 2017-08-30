@@ -5,12 +5,13 @@ block primary
     .col-md-6.col-md-offset-3
       // @todo add enc='multipart/form-data
       // mind that this will break form post
-      form#msform(method='POST' action='/dev/listing/add')
+      form#msform(method='POST' action='#/dev/listing/add')
         //- ul#progressbar
         //-   li.active Etape 1
         //-   li Etape 2
         //-   li Etape 3
         fieldset
+          //- pre #{user}
           h2 Let’s get started: </br> Where’s your place located, #{user.profile.firstName}? 🙌
           div.form-group
             label(for='typeaheadaddress') Full Address
@@ -18,27 +19,27 @@ block primary
           .row
             div.form-group.col-md-3
               label(for='numberaddress') Number        
-              input#numberaddress.form-control(type='number', placeholder='' name='address.number' disabled)         
+              input#numberaddress.form-control(type='number', placeholder='' name='address.number')         
             div.form-group.col-md-9
               label(for='streetaddress') Street Address
-              input#streetaddress.form-control(type='text', placeholder='' name='address.street' disabled)
+              input#streetaddress.form-control(type='text', placeholder='' name='address.street')
           .row
             div.form-group.col-md-6
               label(for='zip') Zip Code
-              input#zip.form-control(type='number', placeholder='' name='address.zip' disabled)
+              input#zip.form-control(type='number', placeholder='' name='address.zip')
             div.form-group.col-md-6
               label(for='city') City
-              input#city.form-control(type='text', placeholder='' name='address.city' disabled)
+              input#city.form-control(type='text', placeholder='' name='address.city')
           .row
             div.form-group.col-md-6
               label(for='department') Departement
-              input#department.form-control(type='text', placeholder='' name='address.department' disabled)
+              input#department.form-control(type='text', placeholder='' name='address.department')
             div.form-group.col-md-6
               label(for='region') Region
-              input#region.form-control(type='text', placeholder='' name='address.region' disabled)
+              input#region.form-control(type='text', placeholder='' name='address.region')
           div.form-group
             label(for='country') Country
-            input#country.form-control(type='text', placeholder='' name='address.country' disabled)
+            input#country.form-control(type='text', placeholder='' name='address.country')
           input.next.action-button.btn.btn-red(type="button" value="Next" name="next")
 
         fieldset
@@ -94,5 +95,10 @@ block primary
             div.form-group.col-md-12        
               label(for='filesimages') Upload Photos - PNG or JPG        
               input#filesimages.form-control(type="file" name="files" )
-          input.previous.action-button.btn.btn-dark(type="button" value="Previous" name="previous")              
-          input(type='submit', name="submit" value='Submit Listing', class='submit action-button btn btn-red')
+          input.previous.action-button.btn.btn-dark(type="button" value="Previous" name="previous")
+          //- Hidden Field
+          input(type='hidden', name='owner.name' value=`${user.profile.name}`)                        
+          input(type='hidden', name='owner.nickname' value=`${user.profile.firstName}`)                        
+          input(type='hidden', name='owner.slackid' value=`${user.slack}`)                    
+
+        input(type='submit', name="submit_value" value='Submit Listing', class='submit action-button btn btn-red' onclick="document.getElementById('msform').submit()")
